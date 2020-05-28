@@ -1,0 +1,62 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:spacetrackerb"
+        xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="spacetrackerb.MainWindow"
+        mc:Ignorable="d"
+        Title="Space tracker" Height="850" Width="1000" Closed="Window_Closed">
+    <StackPanel Margin="3">
+        <GroupBox Header="Search by ID" Margin="5">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="TxtBxGetID" Margin="10"></TextBox>
+                    <TextBlock Grid.Column="1" Margin="10" Text="Example ID's: 25544, 37809, 45590, 41868..."></TextBlock>
+                    <Button Grid.Column="2" x:Name="BtnMore" Click="BtnMore_Click" Content="GET MORE" Margin="10"></Button>
+                </Grid>
+                <TextBlock Margin="10, 5" x:Name="TxtBlckData"><Run Text="..."/></TextBlock>
+                <TextBlock Margin="10, 5" x:Name="TxtBlckEquator" Text="..."></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="BtnGetData" Margin="10" Click="BtnGetData_Click" Content="GET DATA"></Button>
+                    <Button Grid.Column="1" x:Name="BtnAddToList" Margin="10" Click="BtnAddToList_Click" Content="ADD"></Button>
+                    <Button Grid.Column="2" x:Name="BtnDeleteFromList" Margin="10" Click="BtnDeleteFromList_Click" Content="DELETE"></Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Tracked points" Margin="5">
+            <StackPanel>
+                <ListBox x:Name="LbxTracking" Margin="10,5" SelectionChanged="LbxTracking_SelectionChanged" Height="70"></ListBox>
+                <TextBlock x:Name="TxtBlckMessages" Foreground="Red" Height="16" Margin="10, 0" FontSize="9"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnShowAll" Click="BtnShowAll_Click" Margin="10" Grid.Column="0" Content="DISPLAY ALL"></Button>
+                    <Button x:Name="BtnSave" Click="BtnSave_Click" Margin="10" Grid.Column="1" Content="SAVE"></Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Map" Margin="5">
+            <WindowsPresentation:GMapControl Name="MapView" Height="400" Width="940" Loaded="MapView_Loaded"/>
+        </GroupBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10" HorizontalAlignment="Right" Text="A.Tack" Grid.Column="1"></TextBlock>
+        </Grid>
+    </StackPanel>
+</Window>
